@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 900px; width: 100%;">
+    <div class="text-center mb-4">
+      <h2 class="card-title text-primary fw-bold">Elige tu generación de Pokémon</h2>
+      <p class="text-muted">Selecciona una generación para comenzar tu aventura</p>
+    </div>
+
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-4" *ngFor="let gen of generaciones">
+          <button 
+            class="btn-generacion text-white d-flex align-items-center justify-content-center text-center fw-bold btn btn-primary"
+            [ngStyle]="{
+              'background-image': 'url(' + gen.imagen + ')'
+            }"
+            (click)="seleccionarGeneracion(gen.numero)" 
+            data-bs-toggle="modal" 
+            data-bs-target="#modalGeneracion"
+          >
+            Generación {{ gen.numero }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal elegir juego -->
+<div class="modal fade" id="modalGeneracion" tabindex="-1" aria-labelledby="modalGeneracionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalGeneracionLabel">Generación {{ selectedGeneracion }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Has seleccionado la Generación {{ selectedGeneracion }}. ¡Ahora puedes elegir tu juego!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
